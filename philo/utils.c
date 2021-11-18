@@ -6,11 +6,11 @@
 /*   By: gjailbir <gjailbir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 21:17:38 by gjailbir          #+#    #+#             */
-/*   Updated: 2021/11/16 23:08:12 by gjailbir         ###   ########.fr       */
+/*   Updated: 2021/11/18 13:56:19 by gjailbir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philo.h"
+#include "philo.h"
 
 void	error_programm(int i)
 {

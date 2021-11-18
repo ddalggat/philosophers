@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.c                                           :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gjailbir <gjailbir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 21:17:05 by gjailbir          #+#    #+#             */
-/*   Updated: 2021/11/16 23:07:52 by gjailbir         ###   ########.fr       */
+/*   Updated: 2021/11/18 18:00:17 by gjailbir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philo.h"
+#include "philo.h"
 
-void	*start_routine(void *a)
+void	*start_routine(void *one_philo)
 {
 	t_philo	*philo;
 
-	philo = (t_philo *)a;
+	philo = (t_philo *)one_philo;
 	pthread_detach(philo->philo_thread);
 	philo->last_eat = philo->param->time_start;
 	while (1)
@@ -24,14 +24,14 @@ void	*start_routine(void *a)
 		if (philo->eat_count != 0)
 		{
 			lock_mutex(philo);
-			sms(philo, "eating");
+			sms(philo, "eating🍕");
 			philo->eat_count--;
 			my_sleep(philo->param->eat);
 			unlock_mutex(philo);
 			philo->last_eat = get_time();
-			sms(philo, "sleeping");
+			sms(philo, "sleeping🛏");
 			my_sleep(philo->param->sleep);
-			sms(philo, "thinking");
+			sms(philo, "thinking🧠");
 		}
 		else
 			break ;
@@ -49,7 +49,7 @@ void	create_pthread(t_param *param)
 	{
 		if (i % 2 == 0)
 			pthread_create(&param->philo[i].philo_thread, NULL, &start_routine,
-				  &param->philo[i]);
+				&param->philo[i]);
 		usleep(30);
 	}
 	i = -1;
@@ -58,7 +58,7 @@ void	create_pthread(t_param *param)
 	{
 		if (i % 2 == 1)
 			pthread_create(&param->philo[i].philo_thread, NULL, &start_routine,
-				  &param->philo[i]);
+				&param->philo[i]);
 		usleep(30);
 	}
 	pthread_create(&param->check_death_thread, NULL, &control_dead, param);
@@ -88,7 +88,7 @@ void	init_philo(t_param *param)
 		param->philo[0].right = 0;
 }
 
-int	parser(char **argv, t_param *param)
+int	init_params(char **argv, t_param *param)
 {
 	param->number_of_philo = ft_atoi(argv[1]);
 	param->time_to_live = ft_atoi(argv[2]);

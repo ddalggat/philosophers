@@ -4,9 +4,9 @@ RM	= rm -f
 
 NAME = philo
 
-SRCS = main.c parser.c utils.c philo_1.c philo_2.c
+SRCS = main.c init.c utils.c philo_1.c philo_2.c
 
-DEPS	=	../philo.h
+DEPS	=	philo.h
 
 OBJS = ${SRCS:.c=.o}
 

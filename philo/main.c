@@ -6,11 +6,11 @@
 /*   By: gjailbir <gjailbir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 21:16:55 by gjailbir          #+#    #+#             */
-/*   Updated: 2021/11/16 23:07:38 by gjailbir         ###   ########.fr       */
+/*   Updated: 2021/11/18 13:56:02 by gjailbir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philo.h"
+#include "philo.h"
 
 int	memory_allocation(t_param *param)
 {
@@ -30,7 +30,7 @@ int	main(int argc, char **argv)
 
 	if (argc == 5 || argc == 6)
 	{
-		if (!parser(argv, &param) || !memory_allocation(&param))
+		if (!init_params(argv, &param) || !memory_allocation(&param))
 			return (0);
 		init_philo(&param);
 		create_pthread(&param);

@@ -6,11 +6,11 @@
 /*   By: gjailbir <gjailbir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 21:17:21 by gjailbir          #+#    #+#             */
-/*   Updated: 2021/11/16 23:06:04 by gjailbir         ###   ########.fr       */
+/*   Updated: 2021/11/18 17:50:17 by gjailbir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philo.h"
+#include "philo.h"
 
 void	my_sleep(long wait_time)
 {
@@ -28,7 +28,7 @@ void	my_sleep(long wait_time)
 
 int	check_dead(t_param *param, int i)
 {
-	unsigned long	dead;
+	long	dead;
 
 	dead = get_time() - param->philo[i].last_eat;
 	if ((int)(dead) > param->time_to_live)

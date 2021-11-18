@@ -6,11 +6,11 @@
 /*   By: gjailbir <gjailbir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 21:17:12 by gjailbir          #+#    #+#             */
-/*   Updated: 2021/11/16 23:02:20 by gjailbir         ###   ########.fr       */
+/*   Updated: 2021/11/18 18:00:28 by gjailbir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philo.h"
+#include "philo.h"
 
 unsigned long	get_time(void)
 {
@@ -35,9 +35,8 @@ void	sms(t_philo *philo, char *str)
 void	lock_mutex(t_philo *philo)
 {
 	pthread_mutex_lock(&philo->param->mutex[philo->left]);
-	sms(philo, "lock a left fork");
 	pthread_mutex_lock(&philo->param->mutex[philo->right]);
-	sms(philo, "lock a right fork");
+	sms(philo, "take forks🍴");
 }
 
 void	unlock_mutex(t_philo *philo)
