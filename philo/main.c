@@ -6,7 +6,7 @@
 /*   By: gjailbir <gjailbir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 21:16:55 by gjailbir          #+#    #+#             */
-/*   Updated: 2021/11/18 13:56:02 by gjailbir         ###   ########.fr       */
+/*   Updated: 2021/11/18 21:54:36 by gjailbir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ int	main(int argc, char **argv)
 
 	if (argc == 5 || argc == 6)
 	{
-		if (!init_params(argv, &param) || !memory_allocation(&param))
+		if (!init_params(argv, &param) || !memory_allocation(&param) \
+		|| (!init_philo(&param)))
 			return (0);
-		init_philo(&param);
 		create_pthread(&param);
 		free(param.philo);
 		free(param.mutex);

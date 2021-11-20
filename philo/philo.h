@@ -6,7 +6,7 @@
 /*   By: gjailbir <gjailbir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 18:04:00 by gjailbir          #+#    #+#             */
-/*   Updated: 2021/11/18 17:52:09 by gjailbir         ###   ########.fr       */
+/*   Updated: 2021/11/18 21:58:46 by gjailbir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ int				ft_atoi(const char *s);
 void			error_programm(int i);
 
 //***//philo_1_functions\\***//
-unsigned long	get_time(void);
-void			sms(t_philo *philo, char *str);
+long			get_time(void);
+int				sms(t_philo *philo, char *str);
 void			lock_mutex(t_philo *philo);
 void			unlock_mutex(t_philo *philo);
 
@@ -62,7 +62,7 @@ void			destroy(t_param *param);
 
 //***//parser_functions\\***//
 int				init_params(char **argv, t_param *param);
-void			init_philo(t_param *param);
+int				init_philo(t_param *param);
 void			create_pthread(t_param *param);
 void			*start_activity(void *a);
 

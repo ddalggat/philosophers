@@ -6,7 +6,7 @@
 /*   By: gjailbir <gjailbir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 21:17:05 by gjailbir          #+#    #+#             */
-/*   Updated: 2021/11/18 18:00:17 by gjailbir         ###   ########.fr       */
+/*   Updated: 2021/11/21 00:59:45 by gjailbir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@ void	*start_routine(void *one_philo)
 		if (philo->eat_count != 0)
 		{
 			lock_mutex(philo);
-			sms(philo, "eating🍕");
+			sms(philo, "is eating🍕");
 			philo->eat_count--;
 			my_sleep(philo->param->eat);
 			unlock_mutex(philo);
 			philo->last_eat = get_time();
-			sms(philo, "sleeping🛏");
+			sms(philo, "is sleeping🛏");
 			my_sleep(philo->param->sleep);
-			sms(philo, "thinking🧠");
+			sms(philo, "is thinking🧠");
 		}
 		else
 			break ;
@@ -53,7 +53,6 @@ void	create_pthread(t_param *param)
 		usleep(30);
 	}
 	i = -1;
-	usleep(30);
 	while (++i < param->number_of_philo)
 	{
 		if (i % 2 == 1)
@@ -66,7 +65,7 @@ void	create_pthread(t_param *param)
 	destroy(param);
 }
 
-void	init_philo(t_param *param)
+int	init_philo(t_param *param)
 {
 	int	i;
 
@@ -77,7 +76,10 @@ void	init_philo(t_param *param)
 		param->philo[i].id = i + 1;
 		param->philo[i].param = param;
 		if (pthread_mutex_init(&param->mutex[i], NULL) != 0)
+		{
 			error_programm(4);
+			return (0);
+		}
 		param->philo[i].left = i;
 		if (i < param->number_of_philo - 1)
 			param->philo[i].right = (i + 1);
@@ -86,6 +88,7 @@ void	init_philo(t_param *param)
 		param->philo[--i].right = 0;
 	if (param->number_of_philo == 1)
 		param->philo[0].right = 0;
+	return (1);
 }
 
 int	init_params(char **argv, t_param *param)

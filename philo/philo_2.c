@@ -6,7 +6,7 @@
 /*   By: gjailbir <gjailbir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 21:17:21 by gjailbir          #+#    #+#             */
-/*   Updated: 2021/11/18 17:50:17 by gjailbir         ###   ########.fr       */
+/*   Updated: 2021/11/19 20:19:02 by gjailbir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	*control_dead(void *param)
 		if (sum_eat == 0)
 		{
 			pthread_mutex_lock(&tmp->mutex_sms);
-			printf("%s", "\x1B[92m All philosophers are fed up\n\033");
+			printf("%s", "\x1B[92m All philosophers are fed up🤙\n\033");
 			return (NULL);
 		}
 	}
